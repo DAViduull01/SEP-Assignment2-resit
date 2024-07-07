@@ -1,12 +1,12 @@
 name: Testing and Building with PyBuilder
 
 on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    branches:
-      - '**'
+    push:
+        branches:
+        - '**'
+    pull_request:
+        branches:
+        - '**'
 
 jobs:
   build-and-test:
@@ -26,7 +26,5 @@ jobs:
 
       - name: Run PyBuilder build
         uses: pybuilder/build@v12
-        with:
-          targets: install_dependencies publish
 
 
