@@ -30,11 +30,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
-      - name: Run tests
+      - name: Install PyBuilder
         run: |
-          python -m unittest discover -s tests -p '*_test.py'
+          pip install pybuilder
+
+      - name: Build and Test with PyBuilder
+        run: |
+          pyb install_dependencies
+          pyb analyze
+          pyb publish 
+          pyb run_unit_tests
 
