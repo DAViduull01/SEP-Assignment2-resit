@@ -43,4 +43,3 @@ jobs:
           This release is automatically generated based on the commit containing the word "release".
         draft: false
         prerelease: false
-
