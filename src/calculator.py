@@ -1,5 +1,9 @@
 # src/calculator.py
 
+"""
+This module provides mathematical operations like addition, subtraction, multiplication, and division.
+"""
+
 def divide(numerator, denominator):
     """
     Divide the numerator by the denominator.
