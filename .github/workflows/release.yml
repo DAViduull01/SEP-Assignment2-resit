@@ -11,10 +11,10 @@ permissions:
 
 jobs:
   create-release:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Check Commit Message for "release"
