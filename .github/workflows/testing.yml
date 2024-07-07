@@ -31,4 +31,4 @@ jobs:
 
       - name: Execute PyBuilder
         run: |
-          pyb ${{ env.PYB_EXTRA_ARGS }}
+          pyb -X ${{ env.PYB_EXTRA_ARGS }}
