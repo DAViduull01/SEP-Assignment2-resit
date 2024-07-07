@@ -55,6 +55,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./path/to/your/asset.zip
-        asset_name: your-asset.zip
+        asset_path: ./dist/my-release-asset.zip  # Update this to the actual path of your file
+        asset_name: my-release-asset.zip
         asset_content_type: application/zip
