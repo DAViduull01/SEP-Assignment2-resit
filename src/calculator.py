@@ -1,7 +1,7 @@
 # src/calculator.py
 
 """
-This module provides mathematical operations like addition, subtraction, multiplication, and division.
+This module provides mathematical operations like addition, subtraction, multiplication and division.
 """
 
 def divide(numerator, denominator):
