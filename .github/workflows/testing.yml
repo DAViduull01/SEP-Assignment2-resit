@@ -14,10 +14,14 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "pypy3.9", "pypy3.10"]
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "pypy3.9"
+          - "pypy3.10"
         exclude:
           - python-version: "3.9"
-            os: windows-latest
 
     steps:
       - name: Checkout code
