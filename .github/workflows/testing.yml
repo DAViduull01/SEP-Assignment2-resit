@@ -19,12 +19,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.9' 
 
-      - name: PyBuilder Action
+      - name: Install PyBuilder
+        run: pip install pybuilder
+
+      - name: Run PyBuilder build
         uses: pybuilder/build@v12
         with:
-          python-version: ${{ matrix.python-version }}
-          pyb-extra-args: "upload"
-          pyb-version: ">=0.12.0"
+          targets: install_dependencies publish
+
 
