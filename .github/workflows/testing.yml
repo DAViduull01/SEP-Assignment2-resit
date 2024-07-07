@@ -23,18 +23,10 @@ jobs:
         
       - name: Install PyBuilder
         run: pip install pybuilder
-      - shell: bash
-        if: |
-          contains(env.DEPLOY_OSES, runner.os) &&
-          contains(env.DEPLOY_PYTHONS, matrix.python-version) &&
-          contains(env.DEPLOY_BRANCHES, github.ref)
-        run: |
-          echo "PYB_EXTRA_ARGS=upload" >> $GITHUB_ENV
+    
       - uses: pybuilder/build@master
-        with:
-          python-version: ${{ matrix.python-version }}
-          pyb-extra-args: ${{ env.PYB_EXTRA_ARGS }}
-          pyb-version: ">=0.13.0.dev0"
 
+      - name: test
+        run: python3 -m unittest tests/test_calculator.py 
 
 
