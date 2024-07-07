@@ -12,6 +12,15 @@ jobs:
   build-and-test:
     runs-on: macos-latest
 
+    strategy:
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "pypy3.9"
+          - "pypy3.10"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,11 +30,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set PyB_EXTRA_ARGS
+      - name: Set PYB_EXTRA_ARGS
         run: |
           echo "PYB_EXTRA_ARGS=upload" >> $GITHUB_ENV
 
-      - name: Run PyBuilder with custom args
+      - name: Execute PyBuilder
         uses: pybuilder/build@master
         with:
           python-version: ${{ matrix.python-version }}
