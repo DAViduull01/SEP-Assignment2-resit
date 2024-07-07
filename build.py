@@ -7,7 +7,7 @@ use_plugin("python.distutils")
 
 name = "your_project_name"
 version = "0.1.0"
-default_task = ["clean", "install_dependencies", "analyze", "publish"]
+default_task = ["clean", "install_dependencies", "publish"]
 
 @init
 def initialize(project):
