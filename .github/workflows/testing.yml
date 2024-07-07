@@ -16,11 +16,6 @@ jobs:
       matrix:
         python-version:
           - "3.9"
-          - "3.11"
-          - "pypy3.9"
-          - "pypy3.10"
-        exclude:
-          - python-version: "3.9"
 
     steps:
       - name: Checkout code
