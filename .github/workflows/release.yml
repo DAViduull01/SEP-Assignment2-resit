@@ -7,37 +7,39 @@ on:
 
 jobs:
   create-release:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Check Commit Message for "release"
-      id: check_commit_message
-      run: |
-        if [[ "${{ github.event.head_commit.message }}" == *"release"* ]]; then
-          echo "Commit message contains 'release'. Proceeding with release creation."
-          echo "continue=true" >> $GITHUB_ENV
-        else
-          echo "Commit message does not contain 'release'. Skipping release creation."
-          echo "continue=false" >> $GITHUB_ENV
-        fi
-    - name: Set up Git
-      if: env.continue == 'true'
-      run: |
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
-    - name: Create GitHub Release
-      if: env.continue == 'true'
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v${{ github.run_number }}
-        release_name: Release ${{ github.run_number }}
-        body: |
-          This release is automatically generated based on the commit containing the word "release".
-        draft: false
-        prerelease: false
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Check Commit Message for "release"
+        id: check_commit_message
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == *"release"* ]]; then
+            echo "Commit message contains 'release'. Proceeding with release creation."
+            echo "create_release=true" >> $GITHUB_ENV
+          else
+            echo "Commit message does not contain 'release'. Skipping release creation."
+            echo "create_release=false" >> $GITHUB_ENV
+          fi
+      
+      - name: Set up Git
+        if: env.create_release == 'true'
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      
+      - name: Create GitHub Release
+        if: env.create_release == 'true'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}  # Example: v1
+          release_name: Release ${{ github.run_number }}
+          body: |
+            This release is automatically generated based on the commit containing the word "release".
+          draft: false
+          prerelease: false
