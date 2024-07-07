@@ -21,10 +21,7 @@ jobs:
         with:
           python-version: '3.9' 
 
-      - name: Install PyBuilder
-        run: pip install pybuilder
-
-      - name: Run PyBuilder build
+      - name: PyBuilder Action
         uses: pybuilder/build@v12
 
 
