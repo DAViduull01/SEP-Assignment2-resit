@@ -10,9 +10,9 @@ https://github.com/DAViduull01/SEP-Assignment2-resit/actions/runs/9827576926
 
 ## Workflow 2: Static analysis (`static_analysis.yml`)
 
-<Inform which tool is used to perform code quality check with static analysis.>
+The tool used to perform code quality check with static analysis is Pylint.
 
-<Provide the link to one log (from the "Actions" tab on GitHub) of an execution of this workflow>
+https://github.com/DAViduull01/SEP-Assignment2-resit/actions/runs/9828574641
 
 ## Workflow 3: Release (`release.yml`)
 
