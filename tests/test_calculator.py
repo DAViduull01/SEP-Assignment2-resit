@@ -1,5 +1,5 @@
 import unittest
-from calculator import divide
+from src.calculator import divide
 
 class TestDivision(unittest.TestCase):
 
