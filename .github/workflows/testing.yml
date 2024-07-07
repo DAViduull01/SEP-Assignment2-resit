@@ -1,27 +1,21 @@
-name: Testing and Building with PyBuilder
+name: Testing with PyBuilder
 
 on:
-    push:
-        branches:
-        - '**'
-    pull_request:
-        branches:
-        - '**'
+  push:
+    branches:
+      - main  # Adjust branch name as needed
 
 jobs:
   build-and-test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9' 
+      - name: Setup Python and PyBuilder
+        uses: pybuilder/build@master
 
-      - name: PyBuilder Action
-        uses: pybuilder/build@v12
-
+      - name: Run PyBuilder build
+        run: pyb install_dependencies publish  # Adjust commands as per your project
 
