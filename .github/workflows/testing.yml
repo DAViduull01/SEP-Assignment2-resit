@@ -29,6 +29,11 @@ jobs:
         run: |
           echo "PYB_EXTRA_ARGS=upload" >> $GITHUB_ENV
 
+      - name: Execute Pre-Build Script
+        if: ${{ github.event_name == 'push' }}  # Optional: Condition to run only on push events
+        run: |
+          ./pre_build_script.sh  # Replace with your actual script name and path
+
       - name: Execute PyBuilder
         run: |
           pyb -X ${{ env.PYB_EXTRA_ARGS }}
