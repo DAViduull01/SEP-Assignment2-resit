@@ -16,4 +16,4 @@ https://github.com/DAViduull01/SEP-Assignment2-resit/actions/runs/9828574641
 
 ## Workflow 3: Release (`release.yml`)
 
-<Provide the link to one log (from the "Actions" tab on GitHub) of an execution of this workflow>
+
