@@ -5,18 +5,22 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   create-release:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Check Commit Message for "release"
       id: check_commit_message
       run: |
-        if [[ "${{ github.event.head_commit.message }}" == *"release"* ]]; then
+        if echo "${{ github.event.head_commit.message }}" | grep -iq "release"; then
           echo "Commit message contains 'release'. Proceeding with release creation."
           echo "continue=true" >> $GITHUB_ENV
         else
@@ -54,4 +58,3 @@ jobs:
         asset_path: ./path/to/your/asset.zip
         asset_name: your-asset.zip
         asset_content_type: application/zip
-        
