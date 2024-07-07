@@ -40,4 +40,3 @@ jobs:
               run: |
                 echo "Creating release $RELEASE_TAG"
                 echo "$RELEASE_BODY" | gh release create $RELEASE_TAG -F -
-
