@@ -28,4 +28,5 @@ jobs:
 
         - name: Run static analysis
           run: |
-            pylint **/*.py
+              pylint .
+          
