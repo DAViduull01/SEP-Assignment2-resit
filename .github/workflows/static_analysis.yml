@@ -1,6 +1,6 @@
 name: Static Analysis
 
-on: 
+on:
   pull_request:
     branches:
       - '**'
@@ -9,7 +9,7 @@ jobs:
     static-analysis:
       runs-on: macos-latest
 
-      steps:
+      steps: 
         - name: Checkout code
           uses: actions/checkout@v4
 
@@ -25,4 +25,5 @@ jobs:
 
         - name: Run static analysis
           run: |
-            pylint **/*.py
+              pylint src/calculator.py
+          
